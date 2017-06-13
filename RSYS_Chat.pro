@@ -5,13 +5,15 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += network
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets network
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = RSYS_Chat
 TEMPLATE = app
 CONFIG += c++14
-
+QMAKE_CXXFLAGS += -std=c++0x -pthread
+LIBS += -pthread
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -27,11 +29,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    qchatcommunicator.cpp
+    qchatcommunicator.cpp \
+    chatwindow.cpp
 
 HEADERS += \
         mainwindow.h \
-    qchatcommunicator.h
+    qchatcommunicator.h \
+    chatwindow.h
 
 FORMS += \
         mainwindow.ui
